@@ -1,0 +1,34 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">Add Details Of Employee</h3>
+    </div>
+    <div class="modal-body">
+        <div>
+            <label>Name:</label>
+            <input type="text" placeholder="Enter name here">
+        </div>
+        <div>
+            <label>Designation:</label>
+            <input type="text" placeholder="Enter designation here">
+        </div>
+        <div>
+            <label>Age:</label>
+            <input type="number" placeholder="Enter age here">
+        </div>
+        <div>
+            <label>Date Of Joining:</label>
+            <select>
+                <option value="" selected disabled>--Please select month--</option>
+                <option ng-repeat="month in months" value="{{month}}">{{month}}</option>
+            </select>
+            <select>
+                <option value="" selected disabled>--Please select year--</option>
+                <option ng-repeat="year in years" value="{{year}}">{{year}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button">Add</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
