@@ -1,0 +1,15 @@
+<div ng-controller='addDetailsController'>
+    <label class="information">Click Here to Add New Employee</label>
+    <button>ADD</button>
+    <div>
+        <select>
+            <option value="" selected disabled>--Please select month--</option>
+            <option ng-repeat="month in months" value="{{month}}">{{month}}</option>
+        </select>
+        <select>
+            <option value="" selected disabled>--Please select year--</option>
+            <option ng-repeat="year in years" value="{{year}}">{{year}}</option>
+        </select>
+    </div>
+    <button class="pull-right" ng-click="logout()">Logout</button>
+</div>
