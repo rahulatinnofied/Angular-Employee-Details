@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html ng-app='myApp'>
+<html>
 
 <head>
     <title></title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body ng-controller="myController">
+<body ng-app='app' ng-controller="modalCntrl">
     <label class="information">Click Here to Add New Employee</label>
-    <button>ADD</button>
+    <div>
+        <button ng-click="open()">ADD</button>
+    </div>
     <div>
         <select>
             <option value="" selected disabled>--Please select month--</option>
@@ -22,9 +24,9 @@
     <button class="pull-right">Logout</button>
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/ui-bootstrap-tpls-0.13.3.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/template.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 </body>
 
 </html>
