@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+
+<head>
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body ng-controller="myController">
+    <label class="information">Click Here to Add New Employee</label>
+    <button>ADD</button>
+    <div>
+        <select>
+            <option value="" selected disabled>--Please select month--</option>
+            <option ng-repeat="month in months" value="{{month}}">{{month}}</option>
+        </select>
+        <select>
+            <option value="" selected disabled>--Please select year--</option>
+            <option ng-repeat="year in years" value="{{year}}">{{year}}</option>
+        </select>
+    </div>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/ui-bootstrap-tpls-0.13.3.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/template.js"></script>
+</body>
+
+</html>
