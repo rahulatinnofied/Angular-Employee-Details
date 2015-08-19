@@ -5,30 +5,31 @@
     <div class="modal-body">
         <div>
             <label>Name:</label>
-            <input type="text" placeholder="Enter name here">
+            <input type="text" placeholder="Enter name here" ng-model="employeeName">
         </div>
         <div>
             <label>Designation:</label>
-            <input type="text" placeholder="Enter designation here">
+            <input type="text" placeholder="Enter designation here" ng-model="employeeDesignation">
         </div>
         <div>
             <label>Age:</label>
-            <input type="number" placeholder="Enter age here">
+            <input type="number" placeholder="Enter age here" ng-model="employeeAge">
         </div>
         <div>
             <label>Date Of Joining:</label>
-            <select>
+            <select ng-model="month">
                 <option value="" selected disabled>--Please select month--</option>
                 <option ng-repeat="month in months" value="{{month}}">{{month}}</option>
             </select>
-            <select>
+            <select ng-model="year">
                 <option value="" selected disabled>--Please select year--</option>
                 <option ng-repeat="year in years" value="{{year}}">{{year}}</option>
             </select>
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="button">Add</button>
+        <button class="btn btn-primary" type="button" ng-click="addEmployee()
+">Add</button>
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     </div>
 </div>
