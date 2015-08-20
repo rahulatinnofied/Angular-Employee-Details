@@ -1,0 +1,26 @@
+<div class="body-wrapper" ng-controller="displayCtrl">
+    <div class="top-filter">
+        <select ng-model="$scope.selectedMonth">
+            <option ng-repeat="month in months" value="{{month}}" ng-click="changeMonth(month)" ng-selected="$scope.selectedMonth===month">{{month}}</option>
+        </select>
+        <select ng-model="$storage.selectedYear">
+            <option ng-repeat="year in $storage.years" value="{{year}}" ng-click="changeYear(year)" ng-selected="$storage.selectedYear==year">{{year}}</option>
+        </select>
+    </div>
+    <ul>
+        <li ng-repeat="employee in $storage.employeeList|joiningDateFilter:$storage.months:$storage.selectedMonth:$storage.selectedYear|range:$storage.selectedPage:pageSize">
+            <input readonly="readonly" id="{{employee.id}}" class="input-text" ng-value="employee.firstName + ' '+ employee.lastName">
+            <button class="btn btn-danger cancel" ng-click="delete(employee , $storage.selectedMonth , $storage.selectedYear)" ng-disabled="{{employee.leaveDate}}">Remove</button>
+        </li>
+    </ul>
+    <hr>
+    <div ng-show="$storage.employeeList.length">
+        <p style="margin :10px 0px 0px 10px"> No. of employees: {{numberOfEmployees}}</p>
+    </div>
+    <hr />
+    <div class="pull-right btn-group">
+        <button ng-repeat="employee in $storage.employeeList |joiningDateFilter:$storage.months:$storage.selectedMonth:$storage.selectedYear| pageCount:pageSize" ng-click="selectPage($index + 1)" class="btn btn-danger" ng-disabled="$storage.selectedPage == {{$index + 1}}">
+            {{$index + 1}}
+        </button>
+    </div>
+</div>

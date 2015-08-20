@@ -1,3 +1,37 @@
-form{
-	margin: 0 auto;
+body {}
+
+form {
+    width: 30%;
+    margin: 150px 0px 0px 430px !important;
+    border: 3px solid #0060b0;
+    border-radius: 20px !important;
+    background-color: #c7def2;
+    padding: 10px 20px 50px;
+    -webkit-box-shadow: 3px 8px 17px 0px rgba(0, 0, 0, 0.88);
+    -moz-box-shadow: 3px 8px 17px 0px rgba(0, 0, 0, 0.88);
+    box-shadow: 3px 8px 17px 0px rgba(0, 0, 0, 0.88);
+}
+
+form i {
+    margin-left: 145px;
+    font-size: 60px !important;
+    color: #0060b0;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+form input {
+    width: 100%;
+    padding: 10px 5px;
+    display: block;
+    margin: 15px 0px;
+    border: 1px solid #0060b0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.login {
+    margin-left: 145px;
+    -webkit-box-shadow: 3px 8px 17px 0px rgba(0, 0, 0, 0.88);
+    -moz-box-shadow: 3px 8px 17px 0px rgba(0, 0, 0, 0.88);
+    box-shadow: 3px 8px 17px 0px rgba(0, 0, 0, 0.88);
 }
