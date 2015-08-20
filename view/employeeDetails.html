@@ -1,0 +1,33 @@
+<!-- body-wrapper div starts for showing the details of the employee -->
+<div class="body-wrapper" ng-controller="displayCtrl">
+    <label>SEARCH BY DATE</label>
+    <!-- div for selecting month and year for showing employees accordingly -->
+    <div class="date-option">
+        <select ng-model="selectedMonth">
+            <option value="" selected disabled>Select Month</option>
+            <option ng-repeat="month in months" value="{{month}}" ng-click="changeMonth(month)" ng-selected="selectedMonth===month">{{month}}</option>
+        </select>
+        <select ng-model="selectedYear">
+            <option value="" selected disabled>Select Year</option>
+            <option ng-repeat="year in years" value="{{year}}" ng-click="changeYear(year)" ng-selected="selectedYear==year">{{year}}</option>
+        </select>
+    </div>
+    <label>LIST OF EMPLOYEES</label>
+    <!-- list for showing the employees -->
+    <ul>
+        <li ng-repeat="employee in employeeList|joiningDateFilter:months:selectedMonth:selectedYear|filter:search|range:selectedPage:pageSize">
+            <i class="fa fa-user"></i>
+            <input readonly="readonly" id="{{employee.id}}" class="employee-name" ng-value="employee.name">
+            <button class="cancel" ng-click="delete(employee,selectedMonth,selectedYear)" ng-disabled="{{employee.leaveDate}}"><i class="fa fa-user-times"></i></button>
+        </li>
+    </ul>
+    <!-- list ends -->
+    <!-- div for pagination starts -->
+    <div class="btn-group">
+        <button ng-repeat="employee in employeeList |joiningDateFilter:months:selectedMonth:selectedYear|filter:search| pageCount:pageSize" ng-click="selectPage($index + 1)" class="btn btn-danger" ng-disabled="selectedPage == ($index + 1)">
+            {{$index + 1}}
+        </button>
+    </div>
+    <!-- div for pagination ends -->
+</div>
+<!--body-wrapper div ends for showing the details of the employee  -->

@@ -22,14 +22,14 @@ angular
             leaveDate: " "
         }, {
             id: new Date().getTime(),
-            name: 'Souvik Singh',
+            name: 'Souvik Gupta',
             designation: 'Engineer',
             age: '22',
             joiningDate: '01/01/2015',
             leaveDate: " "
         }, {
             id: new Date().getTime(),
-            name: 'Rajesh Singh',
+            name: 'Rajesh Dan',
             designation: 'Engineer',
             age: '22',
             joiningDate: '04/01/2015',
@@ -64,29 +64,37 @@ angular
         $scope.employeeAge = '';
         $scope.month = '';
         $scope.year = '';
-
+        $scope.clearErrorMessage = function() {
+            $scope.errorMessage = '';
+        };
         $scope.addEmployee = function() {
             var tempMonth = $scope.months.indexOf($scope.month) + 1;
-            tempMonth = (tempMonth < 10) ? "0" + tempMonth : tempMonth;
+            //tempMonth = (tempMonth < 10) ? "0" + tempMonth : tempMonth;
             // console.log(tempMonth);
             if ($scope.employeeName !== '' && $scope.employeeDesignation !== '' && $scope.employeeAge !== '' &&
                 $scope.month !== '' && $scope.year !== '') {
-                employeeDetailsFactory.getEmployee().push({
-                    id: new Date().getTime(),
-                    name: $scope.employeeName,
-                    designation: $scope.employeeDesignation,
-                    age: $scope.employeeAge,
-                    joiningDate: "01/" + tempMonth + "/" + $scope.year,
-                    leaveDate: " "
-                });
-                $scope.employeeName = '';
-                $scope.employeeDesignation = '';
-                $scope.employeeAge = '';
-                $scope.month = '';
-                $scope.year = '';
-                // console.log(employeeDetailsFactory.employee);
+                if (!/[\d+\.\d+]/g.test($scope.employeeAge) || $scope.employeeAge < 0) {
+                    $scope.errorMessage = 'Age Must be positive number';
+                } else {
+                    var tempMonth = $scope.months.indexOf($scope.month) + 1;
+                    employeeDetailsFactory.getEmployee().push({
+                        id: new Date().getTime(),
+                        name: $scope.employeeName,
+                        designation: $scope.employeeDesignation,
+                        age: $scope.employeeAge,
+                        joiningDate: tempMonth + '/' + '01/' + $scope.year,
+                        leaveDate: ' '
+                    });
+                    $scope.employeeName = '';
+                    $scope.employeeDesignation = '';
+                    $scope.employeeAge = '';
+                    $scope.month = '';
+                    $scope.year = '';
+                    $scope.errorMessage = '';
+                    // console.log(employeeDetailsService.employee);
+                }
             } else {
-                // console.log('Please Fillup All Fields');
+                $scope.errorMessage = 'Please fillup all the fields';
 
             }
         };
@@ -98,6 +106,8 @@ angular
             function(event, toState, toParams, fromState, fromParams, error) {
                 if (error === 'login') {
                     $state.go('addDetails');
+                } else if (error === 'addDetails') {
+                    $state.go('login');
                 }
             }
         );
@@ -146,10 +156,14 @@ angular
                             return deferred.promise;
                         }
                     }
+                }).state('addDetails.employeeView', {
+                    url: 'addDetails/employeeView/:page',
+                    templateUrl: 'view/employeeDetails.html',
+                    controller: 'displayCtrl'
                 });
         }
     ])
-    .controller('displayCtrl', ['$scope', '$window', 'employeeDetailsFactory', function($scope, $window, employeeDetailsFactory) {
+    .controller('displayCtrl', ['$scope', '$state', '$stateParams', 'employeeDetailsFactory', function($scope, $state, $stateParams, employeeDetailsFactory) {
         $scope.employeeList = employeeDetailsFactory.getEmployee();
         $scope.months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
         $scope.years = [2010, 2011, 2012, 2013, 2014, 2015];
@@ -158,16 +172,20 @@ angular
         //$window.localStorage.setItem('selectedWindowMonth', 'january');
         //$window.localStorage.setItem('selectedWindowYear', 2015);
         $scope.pageSize = 3;
-        $scope.selectedPage = $window.localStorage.getItem('selectedWindowPage');
+        $scope.selectedPage = $stateParams.page || 1;
+        console.log("dsfsdfdsfdsfdsfdsfsdfsd", $scope.selectedPage);
         // $scope.selectedMonth = $window.localStorage.getItem('selectedWindowMonth');
         // $scope.selectedYear = $window.localStorage.getItem('selectedWindowYear');
-        $scope.selectedMonth = 'january';
+        $scope.selectedMonth = 'december';
         $scope.selectedYear = 2015;
 
         $scope.selectPage = function(newPage) {
-            $window.localStorage.setItem('selectedWindowPage', newPage);
-
-            $scope.selectedPage = $window.localStorage.getItem('selectedWindowPage');
+            // $window.localStorage.setItem('selectedWindowPage', newPage);
+            console.log(newPage);
+            $state.go('addDetails.employeeView', {
+                page: newPage
+            });
+            // $scope.selectedPage = $window.localStorage.getItem('selectedWindowPage');
         };
         // $scope.changeMonth = function(month) {
         //     console.log("hello");
@@ -252,11 +270,11 @@ angular
                 if (new Date(list[i].joiningDate).getFullYear() < year) {
                     console.log('smaller year');
                     if (list[i].leaveDate === " ") {
-                        alert("yo1");
+
                         filteredList.push(list[i]);
 
                     } else if ((leaveYear > year) || (leaveYear == year && leaveMonth > month)) {
-                        alert("yo2");
+
 
                         filteredList.push(list[i]);
                     }
@@ -266,11 +284,11 @@ angular
                     if ((new Date(list[i].joiningDate).getMonth() + 1) <= month) {
                         console.log('in month');
                         if (list[i].leaveDate === " ") {
-                            alert("yo3");
+
                             filteredList.push(list[i]);
                         } else if (leaveYear > year || (leaveYear == year && leaveMonth > month)) {
                             console.log('in year graeter month');
-                            alert("yo4");
+
                             filteredList.push(list[i]);
                         }
 

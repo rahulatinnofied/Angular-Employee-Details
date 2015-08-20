@@ -1,37 +1,19 @@
-<div>
-    <label class="information">Click Here to Add New Employee</label>
+<!-- div details-header starts -->
+<div class="details-header">
+    <!-- div for add employee button -->
     <div ng-controller="modalCntrl">
-        <button ng-click="open()">ADD</button>
+        <button ng-click="open()" class="add-employee"><i class="fa fa-user-plus"></i> ADD EMPLOYEE</button>
     </div>
-    <!-- Seasrch part -->
-    <div>
-        <input type="search" placeholder="Search for Employee" ng-model="search"></input>
+    <!-- div logout for logout button -->
+    <div class="logout">
+        <span class="logout-text">LOG OUT</span><i class="fa fa-sign-out logout-icon" ng-click="logout()"></i>
     </div>
-    <button class="pull-right" ng-click="logout()">Logout</button>
-    <div class="body-wrapper" ng-controller="displayCtrl">
-        <div class="top-filter">
-            <select ng-model="selectedMonth">
-                <option ng-repeat="month in months" value="{{month}}" ng-click="changeMonth(month)" ng-selected="selectedMonth===month">{{month}}</option>
-            </select>
-            <select ng-model="selectedYear">
-                <option ng-repeat="year in years" value="{{year}}" ng-click="changeYear(year)" ng-selected="selectedYear==year">{{year}}</option>
-            </select>
-        </div>
-        <ul>
-            <li ng-repeat="employee in employeeList|joiningDateFilter:months:selectedMonth:selectedYear|filter:search|range:selectedPage:pageSize">
-                <input readonly="readonly" id="{{employee.id}}" class="input-text" ng-value="employee.name">
-                <button class="btn btn-danger cancel" ng-click="delete(employee,selectedMonth,selectedYear)" ng-disabled="{{employee.leaveDate}}">Remove</button>
-            </li>
-        </ul>
-        <hr>
-        <div ng-show="employeeDetailsFactory.getEmployee().length">
-            <p style="margin :10px 0px 0px 10px"> No. of employees: {{numberOfEmployees}}</p>
-        </div>
-        <hr />
-        <div class="pull-right btn-group">
-            <button ng-repeat="employee in employeeList |joiningDateFilter:months:selectedMonth:selectedYear|filter:search| pageCount:pageSize" ng-click="selectPage($index + 1)" class="btn btn-danger" ng-disabled="selectedPage == {{$index + 1}}">
-                {{$index + 1}}
-            </button>
-        </div>
+    <!-- Searching employee -->
+    <div class="search-box">
+        <i class="fa fa-search"></i>
+        <input type="search" placeholder="Search Employee By Name" ng-model="search"></input>
     </div>
 </div>
+<!-- div details-header ends -->
+<button ui-sref="addDetails.employeeView" class="show-employee-button pull-right">Show Employees</button>
+<div ui-view></div>

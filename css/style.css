@@ -1,4 +1,12 @@
-body {}
+body {
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    background-color: #D3D8E8;
+}
+
+
+/*login form*/
 
 form {
     width: 30%;
@@ -12,26 +20,336 @@ form {
     box-shadow: 3px 8px 17px 0px rgba(0, 0, 0, 0.88);
 }
 
-form i {
+
+/*login icon*/
+
+.sign-in {
     margin-left: 145px;
     font-size: 60px !important;
     color: #0060b0;
     text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
-form input {
+
+/*incon in login form*/
+
+form i {
+    font-size: 30px !important;
+    color: #0060b0;
+    width: 30px;
+}
+
+.form-row {
     width: 100%;
-    padding: 10px 5px;
-    display: block;
-    margin: 15px 0px;
+    padding: 0 30px;
+}
+
+
+/*input tags in login form*/
+
+form input {
+    width: 80%;
+    padding: 10px 15px;
+    display: inline;
+    margin: 15px 10px;
     border: 1px solid #0060b0;
     font-size: 20px;
     font-weight: bold;
+    outline: none;
+    /*border-radius: 15px;*/
 }
 
+form span {
+    font-size: 20px;
+    margin: 10px 0 30px 30px;
+    color: #E54748;
+    font-weight: bold;
+}
+
+
+/*show employee button*/
+
+.show-employee-button {
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    margin: 10px 0 0 0;
+    padding: 5px 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.show-employee-button button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+
+/* login button*/
+
 .login {
-    margin-left: 145px;
+    margin-right: 42px;
     -webkit-box-shadow: 3px 8px 17px 0px rgba(0, 0, 0, 0.88);
     -moz-box-shadow: 3px 8px 17px 0px rgba(0, 0, 0, 0.88);
     box-shadow: 3px 8px 17px 0px rgba(0, 0, 0, 0.88);
+}
+
+
+/*for modal part*/
+
+.modal-body {
+    overflow: auto;
+}
+
+.modal-header {
+    /*display: inline;*/
+}
+
+.modal-title {
+    width: 60%;
+    display: inline;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header i {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.modal-header i:hover {
+    color: #E54748;
+    font-size: 20px;
+}
+
+.error-style {
+    border: 5px solid #72211F;
+}
+
+
+/*field name of the modal's input text*/
+
+.modal-container label {
+    float: left;
+    width: 30%;
+    text-align: right;
+    font-size: 20px;
+    margin: 10px 10px 0 0;
+}
+
+
+/*input text of modal*/
+
+.modal-container input {
+    float: left;
+    width: 59%;
+    margin: 10px 10px 0 0;
+    border: 1px solid #00A7E4;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+}
+
+
+/*select boxes of the modal*/
+
+.modal-container select {
+    float: left;
+    width: 29%;
+    margin: 15px 5px 0 0;
+    border: 1px solid #00A7E4;
+    padding: 9px;
+    border-radius: 10px;
+    outline: none;
+}
+
+
+/*bottom part of the modal*/
+
+.modal-footer {
+    padding-right: 70px;
+}
+
+
+/*error message part of the modal*/
+
+.modal-footer span {
+    font-size: 20px;
+    margin: 0 80px 0 0;
+    color: #E54748;
+    font-weight: bold;
+}
+
+
+/*buttons of the modal*/
+
+.modal-container button {
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/*header of the employees' details page*/
+
+.details-header {
+    overflow: auto;
+    background-color: #4A66A0;
+    padding: 25px;
+}
+
+.datails-header i {
+    font-size: 15px;
+}
+
+
+/*buttons of the employees' details page*/
+
+.details-header button {
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.details-header button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+
+/*search box starts*/
+
+.search-box {
+    margin-left: 430px;
+    width: 400px;
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+.search-box i {
+    font-size: 15px !important;
+    margin: 0 0 0 10px;
+}
+
+.search-box input {
+    width: 200px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    padding: 5px;
+}
+
+
+/*search box ends*/
+
+
+/*add employee button*/
+
+.add-employee {
+    float: left;
+}
+
+
+/*logout icon*/
+
+.logout {
+    float: right;
+}
+
+.logout-text {
+    font-size: 18px !important;
+    color: #fff;
+    margin: 0 10px 0 0;
+    vertical-align: top;
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logout-icon {
+    width: 40px;
+    font-size: 40px !important;
+    color: #fff;
+    cursor: pointer;
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logout-icon:hover {
+    color: #000;
+}
+
+
+/*option part*/
+
+.date-option {
+    text-align: center;
+    padding: 10px;
+}
+
+.date-option select {
+    width: 150px;
+    margin: 5px 5px 0 10px;
+    border: 1px solid #00A7E4;
+    padding: 5px 15px 5px 15px;
+    border-radius: 10px;
+    outline: none;
+    background-color: transparent;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/*body wrapper for shoing employee list*/
+
+.body-wrapper {
+    text-align: center;
+    margin: 20px 0 0 0;
+}
+
+.body-wrapper label {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 20px 0 120px;
+    letter-spacing: 0.2em;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.body-wrapper label:not(:first-child) {
+    margin: 10px 0 10px 10px !important;
+}
+
+.body-wrapper ul {
+    margin: 20px 0 30px 430px !important;
+    font-size: 25px;
+}
+
+.body-wrapper li {
+    list-style-type: none;
+    width: 400px;
+    margin: 0 0 10px 0;
+}
+
+
+/*employee name*/
+
+.employee-name {
+    border: none;
+    background-color: transparent;
+}
+
+
+/*cancel button part starts*/
+
+.cancel {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.cancel i {
+    font-size: 20px;
+    color: #000;
+}
+
+.cancel i:hover {
+    font-size: 30px;
+    color: #7B2420;
 }

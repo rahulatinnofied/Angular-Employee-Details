@@ -1,6 +1,18 @@
+<!-- form for login starts-->
 <form>
-    <i class="fa fa-sign-in"></i>
-    <input type="text" placeholder="username" ng-model="userName">
-    <input type="password" placeholder="password" ng-model="userPwd">
-    <button ui-sref="addDetails" ng-click='login()' class="btn btn-primary login">LOGIN</button>
+    <i class="fa fa-sign-in sign-in"></i>
+    <!-- div for user name input -->
+    <div class="form-row">
+        <i class="fa fa-user"></i>
+        <input type="text" placeholder="username" ng-model="userName" ng-focus="clearMessage()">
+    </div>
+    <!-- div for password input -->
+    <div class="form-row">
+        <i class="fa fa-key"></i>
+        <input type="password" placeholder="password" ng-model="userPwd" ng-focus="clearMessage()">
+    </div>
+    <span>{{loginErrorMessage}}</span>
+    <!-- login button to login -->
+    <button ui-sref="addDetails" ng-click='login()' class="btn btn-primary pull-right login">LOGIN</button>
 </form>
+<!-- form for login ends -->

@@ -1,35 +1,43 @@
-<div>
+<!-- div for modal-container starts-->
+<div class="modal-container" ng-class="{'error-style':errorMessage}">
+    <!-- div for modal header starts-->
     <div class="modal-header">
         <h3 class="modal-title">Add Details Of Employee</h3>
+        <i class="fa fa-times pull-right" ng-click="cancel()"></i>
     </div>
+    <!-- div for modal header ends -->
+    <!-- div for modal-body stsrs -->
     <div class="modal-body">
         <div>
             <label>Name:</label>
-            <input type="text" placeholder="Enter name here" ng-model="employeeName">
+            <input type="text" placeholder="Enter name here" ng-model="employeeName" ng-focus="clearErrorMessage()">
         </div>
         <div>
             <label>Designation:</label>
-            <input type="text" placeholder="Enter designation here" ng-model="employeeDesignation">
+            <input type="text" placeholder="Enter designation here" ng-model="employeeDesignation" ng-focus="clearErrorMessage()">
         </div>
         <div>
             <label>Age:</label>
-            <input type="number" placeholder="Enter age here" ng-model="employeeAge">
+            <input type="number" placeholder="Enter age here" ng-model="employeeAge" ng-focus="clearErrorMessage()">
         </div>
         <div>
             <label>Date Of Joining:</label>
-            <select ng-model="month">
-                <option value="" selected disabled>--Please select month--</option>
+            <select ng-model="month" ng-focus="clearErrorMessage()">
+                <option value="" selected disabled>Select Month</option>
                 <option ng-repeat="month in months" value="{{month}}">{{month}}</option>
             </select>
-            <select ng-model="year">
-                <option value="" selected disabled>--Please select year--</option>
+            <select ng-model="year" ng-focus="clearErrorMessage()">
+                <option value="" selected disabled>Select Year</option>
                 <option ng-repeat="year in years" value="{{year}}">{{year}}</option>
             </select>
         </div>
     </div>
+    <!-- div for modal-body ends -->
     <div class="modal-footer">
+        <span>{{errorMessage}}</span>
         <button class="btn btn-primary" type="button" ng-click="addEmployee()
-">Add</button>
-        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+"><i class="fa fa-plus"></i> Add</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()"><i class="fa fa-times"></i> Cancel</button>
     </div>
 </div>
+<!-- div for modal container ends -->
