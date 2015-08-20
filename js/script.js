@@ -69,8 +69,7 @@ angular
         };
         $scope.addEmployee = function() {
             var tempMonth = $scope.months.indexOf($scope.month) + 1;
-            //tempMonth = (tempMonth < 10) ? "0" + tempMonth : tempMonth;
-            // console.log(tempMonth);
+
             if ($scope.employeeName !== '' && $scope.employeeDesignation !== '' && $scope.employeeAge !== '' &&
                 $scope.month !== '' && $scope.year !== '') {
                 if (!/[\d+\.\d+]/g.test($scope.employeeAge) || $scope.employeeAge < 0) {
@@ -91,7 +90,6 @@ angular
                     $scope.month = '';
                     $scope.year = '';
                     $scope.errorMessage = '';
-                    // console.log(employeeDetailsService.employee);
                 }
             } else {
                 $scope.errorMessage = 'Please fillup all the fields';
@@ -167,40 +165,20 @@ angular
         $scope.employeeList = employeeDetailsFactory.getEmployee();
         $scope.months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
         $scope.years = [2010, 2011, 2012, 2013, 2014, 2015];
-        // console.log("Inside Controller");
-        //$window.localStorage.setItem('selectedWindowPage', 1);
-        //$window.localStorage.setItem('selectedWindowMonth', 'january');
-        //$window.localStorage.setItem('selectedWindowYear', 2015);
         $scope.pageSize = 3;
         $scope.selectedPage = $stateParams.page || 1;
         console.log("dsfsdfdsfdsfdsfdsfsdfsd", $scope.selectedPage);
-        // $scope.selectedMonth = $window.localStorage.getItem('selectedWindowMonth');
-        // $scope.selectedYear = $window.localStorage.getItem('selectedWindowYear');
         $scope.selectedMonth = 'december';
         $scope.selectedYear = 2015;
 
         $scope.selectPage = function(newPage) {
-            // $window.localStorage.setItem('selectedWindowPage', newPage);
             console.log(newPage);
             $state.go('addDetails.employeeView', {
                 page: newPage
             });
-            // $scope.selectedPage = $window.localStorage.getItem('selectedWindowPage');
-        };
-        // $scope.changeMonth = function(month) {
-        //     console.log("hello");
-        //     $window.localStorage.setItem('selectedWindowMonth', month);
-        //     $window.localStorage.setItem('selectedWindowPage', 1);
-        //     $scopeselectedMonth = $window.localStorage.getItem('selectedWindowMonth');
-        //     $scope.selectedPage = $window.localStorage.getItem('selectedWindowPage');
-        // };
-        // $scope.changeYear = function(year) {
-        //     $window.localStorage.setItem('selectedWindowYear', year);
-        //     $window.localStorage.setItem('selectedWindowPage', 1);
 
-        //     $scope.selectedYear = $window.localStorage.getItem('selectedWindowYear');
-        //     $scope.selectedPage = $window.localStorage.getItem('selectedWindowPage');
-        // };
+        };
+
 
         $scope.delete = function(employee, month, year) {
             month = $scope.months.indexOf(month) + 1;
@@ -209,7 +187,6 @@ angular
                 if (employeeDetailsFactory.getEmployee()[i] === employee) {
                     employeeDetailsFactory.getEmployee()[i].leaveDate = month + "/" + "01/" + year;
                     console.log('leave date:--->', employeeDetailsFactory.getEmployee()[i].leaveDate);
-                    //console.log($scope.$storage.employeeList);
                     break;
                 }
             }
@@ -255,8 +232,6 @@ angular
             }
             month = storageMonths.indexOf(month) + 1;
             year = parseInt(year);
-            // console.log(typeof(list));
-            // console.log(list, storageMonths, month, year);
             for (var i = 0; i < list.length; i++) {
 
                 if (list[i].leaveDate !== ' ') {
